@@ -1,95 +1,218 @@
 body {
+    font-family: sans-serif;
+    background: #fea9e0;
+    margin: 0;
+    height: 100vh;
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 90vh;
-    background-color: rgb(189, 225, 122);
-  }
-  
-  #noButton {
-    position: absolute;
-    margin-left: 150px;
-    transition: 0.5s;
-  }
-  
-  #yesButton {
-    position: absolute;
-    margin-right: 150px;
-  }
-  
-  .header_text {
-    font-family: 'Nunito';
-    font-size: 40px;
-    font-weight: bold;
-    color: rgb(255, 255, 255);
+}
+
+/* LANDING PAGE */
+#landing {
     text-align: center;
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-  
-  .buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    margin-left: 20px;
-  }
-  
-  .btn {
-    background-color: #ffffff;
-    color: rgb(233, 48, 48);
-    padding: 15px 32px;
-    text-align: center;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
+    transition: opacity 1s ease;
+    opacity: 1;
+    position: relative;
+    z-index: 10; 
+}
+
+#landing h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+#landing p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+#landing button {
+    background: #333;
+    color: #fff;
     border: none;
-    border-radius: 12px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .gif_container {
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#landing button:hover {
+    background: #555;
+}
+
+/* MAIN CONTAINER: Hidden initially */
+#container {
+    opacity: 0;
+    display: none;
+    transition: opacity 1s ease;
+}
+#container.show {
+    display: block;
+    opacity: 1;
+}
+
+/* CONTENT: Initially hidden */
+#content {
+    opacity: 0;
+    transition: opacity 1s ease;
+}
+#content.show {
+    opacity: 1;
+}
+
+.line {
+    font-size: 2rem;
+    height: 3rem;
     display: flex;
-    justify-content: center;
     align-items: center;
-  }
-  
-  @media only screen and (max-width: 320px) and (max-height: 568px) {
-    body {
-        height: 100vh;
-    }
-  
-    .header_text {
-        font-size: 20px;
-    }
-  
-    img {
-        height: 60vh;
-    }
-  
-    .btn {
-        padding: 10px 18px;
-        font-size: 12px;
-    }
-  }
-  
-  @media only screen and (max-width: 414px) and (max-height: 736px) {
-    body {
-        height: 90vh;
-    }
-  
-    .header_text {
-        font-size: 28px;
-    }
-  
-    img {
-        height: 60vh;
-    }
-  
-    .btn {
-        padding: 15px 25px;
-        font-size: 14px;
-    }
-  }
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#container {
+    position: relative;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* ensure no scrollbars if desired */
+}
+
+/* The container that holds your entire experience */
+#container {
+    position: relative; /* can remain relative if needed */
+}
+
+/* Make the collage take up the entire viewport and start at the very top-left corner */
+#imageContainer {
+    position: fixed; /* changed from absolute to fixed */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1; /* behind the content */
+    overflow: hidden;
+}
+
+/* The images are placed absolutely within the viewport */
+#imageContainer img {
+    position: absolute;
+    transition: transform 1s ease;
+    opacity: 0.9;
+    height: auto;
+    border-radius: 5px;
+    /* Removed width: 100%; to respect individual widths */
+}
+
+/* Example positions: 
+   We'll just pick a few different placements for each nth-child.
+   You can add more or randomize in JS if desired.
+*/
+#imageContainer img:nth-child(1) {
+    top: 5%;
+    left: 10%;
+    width: 300px;
+    transform: rotate(-5deg);
+}
+
+#imageContainer img:nth-child(2) {
+    top: 5%;
+    left: 40%;
+    width: 250px;
+    transform: rotate(5deg);
+}
+
+#imageContainer img:nth-child(3) {
+    top: 5%;
+    left: 70%;
+    width: 350px;
+    transform: rotate(-8deg);
+}
+
+#imageContainer img:nth-child(4) {
+    top: 35%;
+    left: 15%;
+    width: 200px;
+    transform: rotate(3deg);
+}
+
+#imageContainer img:nth-child(5) {
+    top: 35%;
+    left: 45%;
+    width: 280px;
+    transform: rotate(-12deg);
+}
+
+#imageContainer img:nth-child(6) {
+    top: 65%;
+    left: 15%;
+    width: 250px;
+    transform: rotate(7deg);
+}
+
+#imageContainer img:nth-child(7) {
+    top: 65%;
+    left: 30%;
+    width: 220px;
+    transform: rotate(-4deg);
+}
+
+#imageContainer img:nth-child(8) {
+    top: 65%;
+    left: 60%;
+    width: 270px;
+    transform: rotate(5deg);
+}
+
+/* Adjust the text and other content to appear above the collage */
+#content {
+    position: relative;
+    z-index: 10;
+    opacity: 0; 
+    transition: opacity 1s ease;
+}
+
+/* Buttons appear at the end. Initially side by side at the center of the screen. */
+#buttons {
+    display: none;
+}
+
+/* Position the buttons centered on the screen */
+#yesButton, #noButton, #retry{
+    position: fixed;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #333;   
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+/* Yes button: slightly to the left of center */
+#yesButton {
+    top: 60%;
+    left: 50%;
+    transform: translate(-110%, -50%);
+}
+
+/* No button: slightly to the right of center */
+#noButton {
+    top: 60%;
+    left: 50%;
+    transform: translate(10%, -50%);
+    transition: left 0.3s ease, top 0.3s ease;
+}
+
+#retry {
+    top: 70%;
+    left: 50%;
+}
+
+#yesButton:hover, #noButton:hover, #retry:hover {
+    background: #555;
+}
