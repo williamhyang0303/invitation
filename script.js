@@ -16,7 +16,7 @@ const lines = [
         text: "anyways, I know chinese is a pain but its so much more romantic",
     },
     {
-        text: "I have been planing our date!",
+        text: "I have been planning our date!",
     },
     {
         text: "does 12/23 work for you?",
