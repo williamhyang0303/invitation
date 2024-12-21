@@ -1,7 +1,7 @@
 // Lines plus a final entry for buttons
 const lines = [
     {
-        text: "Hi Charlize",
+        text: "Hi Charlize 🫢🫢",
     },
     {
         text: "可愛的，你好嗎?",
